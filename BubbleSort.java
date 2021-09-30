@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Bubble_Sort {
+public class BubbleSort {
     public ArrayList<Integer> sort(ArrayList<Integer> dataList) {
         for (int index = 0; index < dataList.size() - 1; index++) {
             boolean swap = false;
@@ -25,7 +25,7 @@ public class Bubble_Sort {
         for (int i = 0; i < 100; i++) {
             testData.add((int)(Math.random() * 100));
         }
-        Bubble_Sort bSort = new Bubble_Sort();
+        BubbleSort bSort = new BubbleSort();
         bSort.sort(testData);
 
         for (int i = 0; i < testData.size()-1; i++) {
