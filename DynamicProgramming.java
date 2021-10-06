@@ -15,6 +15,9 @@ public class DynamicProgramming {
         Integer[] cache = new Integer[data + 1];
         cache[0] = 0;
         cache[1] = 1;
+        //cache[2] = 1;
+        //cache[3] = 2;
+        //cache[4] = 3;
         for (int index = 2; index < data + 1; index++) {
             cache[index] = cache[index - 1] + cache[index - 2];
         }
