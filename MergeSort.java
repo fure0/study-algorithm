@@ -2,26 +2,64 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MergeSort {
-    
-    public void splitFunc(ArrayList<Integer> dataList) {
-        if (dataList.size() <= 1) {
-            return ;
+
+    public ArrayList<Integer> mergeFunc(ArrayList<Integer> leftList, ArrayList<Integer> rightList) {
+        ArrayList<Integer> mergedList = new ArrayList<Integer>();
+        int leftPoint = 0;
+        int rightPoint = 0;
+
+         // CASE1: left/right 둘 다 있을 때
+        while (leftList.size() > leftPoint && rightList.size() > rightPoint) {
+            if (leftList.get(leftPoint) > rightList.get(rightPoint)) {
+                mergedList.add(rightList.get(rightPoint));
+                rightPoint += 1;
+            } else {
+                mergedList.add(leftList.get(leftPoint));
+                leftPoint += 1;
+            }
         }
-        int medium = dataList.size() / 2;
-        
+
+        // CASE2: right 데이터가 없을 때
+        while (leftList.size() > leftPoint) {
+            mergedList.add(leftList.get(leftPoint));
+            leftPoint += 1;
+        }
+
+        // CASE3: left 데이터가 없을 때
+        while (rightList.size() > rightPoint) {
+            mergedList.add(rightList.get(rightPoint));
+            rightPoint += 1;
+        }
+
+        return mergedList;
+    }
+    
+    public ArrayList<Integer> mergeSplitFunc(ArrayList<Integer> dataList) {
+        if (dataList.size() <= 1) {
+            return dataList;
+        }
+        int medium = dataList.size() / 2;  
+
         ArrayList<Integer> leftArr = new ArrayList<Integer>();
         ArrayList<Integer> rightArr = new ArrayList<Integer>();
-        
-        leftArr = new ArrayList<Integer>(dataList.subList(0, medium)); // 0 부터 medium - 1 인덱스 번호까지 해당 배열 아이템을 서브 배열로 추출
-        rightArr = new ArrayList<Integer>(dataList.subList(medium, dataList.size()));
-        
-        System.out.println(leftArr);
-        System.out.println(rightArr);        
+
+        leftArr = this.mergeSplitFunc(new ArrayList<Integer>(dataList.subList(0, medium))); 
+        rightArr = this.mergeSplitFunc(new ArrayList<Integer>(dataList.subList(medium, dataList.size()))); 
+
+        return this.mergeFunc(leftArr, rightArr);
     }
 
     public static void main(String[] args) {
-        MergeSort sObject = new MergeSort();
-        sObject.splitFunc(new ArrayList<Integer>(Arrays.asList(4, 1, 2, 3, 5, 7)));
+        ArrayList<Integer> testData = new ArrayList<Integer>();
+
+        for (int index = 0; index < 100; index++) {
+            testData.add((int)(Math.random() * 100));
+        }
+
+        MergeSort mSort = new MergeSort();
+        ArrayList<Integer> result = mSort.mergeSplitFunc(testData);
+
+        System.out.println(result);
     }
 
 }
