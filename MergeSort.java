@@ -30,11 +30,16 @@ public class MergeSort {
             mergedList.add(rightList.get(rightPoint));
             rightPoint += 1;
         }
+        System.out.print("merged!!");
+        System.out.println(mergedList);
+        System.out.print("\n");
 
         return mergedList;
     }
     
-    public ArrayList<Integer> mergeSplitFunc(ArrayList<Integer> dataList) {
+    public ArrayList<Integer> mergeSplitFunc(ArrayList<Integer> dataList, String where) {
+        System.out.print(where);
+        System.out.println(dataList);
         if (dataList.size() <= 1) {
             return dataList;
         }
@@ -43,8 +48,8 @@ public class MergeSort {
         ArrayList<Integer> leftArr = new ArrayList<Integer>();
         ArrayList<Integer> rightArr = new ArrayList<Integer>();
 
-        leftArr = this.mergeSplitFunc(new ArrayList<Integer>(dataList.subList(0, medium))); 
-        rightArr = this.mergeSplitFunc(new ArrayList<Integer>(dataList.subList(medium, dataList.size()))); 
+        leftArr = this.mergeSplitFunc(new ArrayList<Integer>(dataList.subList(0, medium)), "leftArr"); 
+        rightArr = this.mergeSplitFunc(new ArrayList<Integer>(dataList.subList(medium, dataList.size())), "rightArr"); 
 
         return this.mergeFunc(leftArr, rightArr);
     }
@@ -52,12 +57,12 @@ public class MergeSort {
     public static void main(String[] args) {
         ArrayList<Integer> testData = new ArrayList<Integer>();
 
-        for (int index = 0; index < 100; index++) {
+        for (int index = 0; index < 10; index++) {
             testData.add((int)(Math.random() * 100));
         }
 
         MergeSort mSort = new MergeSort();
-        ArrayList<Integer> result = mSort.mergeSplitFunc(testData);
+        ArrayList<Integer> result = mSort.mergeSplitFunc(testData, "first");
 
         System.out.println(result);
     }
