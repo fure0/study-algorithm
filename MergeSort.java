@@ -57,7 +57,7 @@ public class MergeSort {
     public static void main(String[] args) {
         ArrayList<Integer> testData = new ArrayList<Integer>();
 
-        for (int index = 0; index < 10; index++) {
+        for (int index = 0; index < 6; index++) {
             testData.add((int)(Math.random() * 100));
         }
 
