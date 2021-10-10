@@ -3,9 +3,9 @@ import java.util.Arrays;
 
 public class QuickSort {
     
-    public void splitFunc(ArrayList<Integer> dataList) {
+    public ArrayList<Integer> sort(ArrayList<Integer> dataList) {
         if (dataList.size() <= 1) {
-            return ;
+            return dataList;
         }
         int pivot = dataList.get(0);
         
@@ -19,18 +19,30 @@ public class QuickSort {
                 leftArr.add(dataList.get(index));
             }
         }
-        
-        System.out.println(leftArr);
-        System.out.println(pivot);
-        System.out.println(rightArr);        
+
+        System.out.println("===========");
+        System.out.println("leftArr " + leftArr);
+        System.out.println("pivot " + pivot);
+        System.out.println("rightArr " + rightArr);  
+
+        ArrayList<Integer> mergedArr = new ArrayList<Integer>();
+        mergedArr.addAll(this.sort(leftArr));
+        mergedArr.addAll(Arrays.asList(pivot));
+        mergedArr.addAll(this.sort(rightArr));
+
+        return mergedArr;
     }
     
 
     public static void main(String[] args) {
-        Integer[] array = {4, 1, 2, 5, 7}; 
-        ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(array));
+        ArrayList<Integer> testData = new ArrayList<Integer>();
 
-        QuickSort sObject = new QuickSort();
-        sObject.splitFunc(new ArrayList<Integer>(Arrays.asList(array)));
+        for (int index = 0; index < 10; index++) {
+            testData.add((int)(Math.random() * 100));
+        }
+
+        QuickSort qSort = new QuickSort();
+        ArrayList<Integer> result = qSort.sort(testData);
+        System.out.println(result);
     }
 }
