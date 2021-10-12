@@ -30,6 +30,8 @@ public class QuickSort {
         mergedArr.addAll(Arrays.asList(pivot)); //array를 arrayList로 변환 
         mergedArr.addAll(this.sort(rightArr));
 
+        System.out.println("mergedArr " + mergedArr);
+
         return mergedArr;
     }
     
@@ -37,7 +39,7 @@ public class QuickSort {
     public static void main(String[] args) {
         ArrayList<Integer> testData = new ArrayList<Integer>();
 
-        for (int index = 0; index < 10; index++) {
+        for (int index = 0; index < 6; index++) {
             testData.add((int)(Math.random() * 100));
         }
         System.out.println("start array " + testData);
