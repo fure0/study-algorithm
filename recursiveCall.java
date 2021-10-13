@@ -37,9 +37,8 @@ public class recursiveCall {
             return 4;
         }
         return factorialFunc4(data - 1) + factorialFunc4(data - 2) + factorialFunc4(data - 3);
-        // 5의 경우 
-        // 4(x), 3(4), 2(2) = 6
-        // 3(4), 2(2), 1(1) = 7 = 13
+        // 4의 경우 3(4) + 2(2) + 1(1) = 7
+        // 5의 경우 4(7) + 3(4) + 2(2) = 13 
     }
 
     public static void main(String[] args) {
