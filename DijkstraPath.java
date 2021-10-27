@@ -23,12 +23,12 @@ public class DijkstraPath {
         // 알고리즘 작성
         System.out.println("priorityQueue : " + priorityQueue);
         while (priorityQueue.size() > 0) {
-            edgeNode = priorityQueue.poll();
+            edgeNode = priorityQueue.poll(); //항상 최소 거리를 뽑는다.
             currentDistance = edgeNode.distance;
             currentNode = edgeNode.vertex;
             System.out.println("----------------------------------------------------------------");
             System.out.println("edgeNode : " + edgeNode + " ||| distances.get(currentNode) : " + distances.get(currentNode) + " currentDistance : " + currentDistance);
-            if (distances.get(currentNode) < currentDistance) {
+            if (distances.get(currentNode) < currentDistance) { //현재 까지의 최단 거리보다 지금 노드의 최단 거리가 길면 이후 처리는 하지 않는다.
                 continue;
             }
             
@@ -40,6 +40,7 @@ public class DijkstraPath {
                 distance = currentDistance + weight;
                 System.out.println("adjacentNode : " + adjacentNode + " To distance : " + distance);
                 
+                //현재 까지의 최단 거리보다 지금 노드의 최단 거리가 짧으면 최단 거리를 업데이트 한다.
                 if (distance < distances.get(adjacent)) {
                     distances.put(adjacent, distance);
                     priorityQueue.add(new Edge(distance, adjacent));
