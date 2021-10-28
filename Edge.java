@@ -1,10 +1,10 @@
 public class Edge implements Comparable<Edge> {
-    public int distance;
     public String vertex;
+    public int distance;
     
-    public Edge(int distance, String vertex) {
-        this.distance = distance;
+    public Edge(String vertex, int distance) {
         this.vertex = vertex;
+        this.distance = distance;
     }
     
     // System.out.println() 으로 객체 자체 출력시, 
