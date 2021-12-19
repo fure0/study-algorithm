@@ -24,10 +24,8 @@ public class SelectSort {
             testData.add((int)(Math.random() * 100));
         }
         SelectSort sSort = new SelectSort();
-        sSort.sort(testData);
+        ArrayList<Integer> result = sSort.sort(testData);
 
-        for (int i = 0; i < testData.size()-1; i++) {
-            System.out.println(testData.get(i));    
-        }
+        System.out.println(result);
     }
 }

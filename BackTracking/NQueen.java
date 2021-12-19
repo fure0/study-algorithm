@@ -4,9 +4,11 @@ public class NQueen {
 
     public boolean isAvailable(ArrayList<Integer> candidate, Integer currentCol) { // 후보와
         Integer currentRow = candidate.size(); // 후보군에 들어가 있는 사이즈 + 1이 다음 행(row)을 체크하니까
+        System.out.println("");
+        System.out.println("@candidate : " + candidate);
         System.out.println("currentRow : " + currentRow + ", currentCol : " + currentCol);
         for (int index = 0; index < currentRow; index++) { //3행 후보값을 확인중이면 1~2행을 순회해 봐야 하니까
-            //수평조건 체크 퀸의 위치 == 현재 행인지 확인)
+            //수평조건 체크 퀸의 위치 == 현재 행인지 확인) candidate는 퀸 후보 위치가 되기 때문에 같은 열(col) 인지 확인하는 과정
             //대각선 체크 절대값(abs)(퀸의 열 - 현재열 = 1)) == (핸재행 - 퀸의행 = 1)
             if ((candidate.get(index) == currentCol) || (Math.abs(candidate.get(index) - currentCol) == currentRow - index) ) {
                 System.out.println("return false");

@@ -24,29 +24,32 @@ public class DijkstraPath {
         
         // 알고리즘 작성
         while (priorityQueue.size() > 0) {
+            System.out.println("----------------------------------------------------------------");
             System.out.println("priorityQueue : " + priorityQueue);
             edgeNode = priorityQueue.poll(); //항상 최소 거리를 뽑는다.
             currentDistance = edgeNode.distance;
             currentNode = edgeNode.vertex;
-            System.out.println("----------------------------------------------------------------");
             System.out.println("edgeNode : " + edgeNode + " ||| distances.get(currentNode) : " + distances.get(currentNode) + " currentDistance : " + currentDistance);
             if (distances.get(currentNode) < currentDistance) { //현재 까지의 최단 거리보다 지금 노드의 최단 거리가 길면 이후 처리는 하지 않는다.
                 continue;
             }
             
             adjacentNodeList = graph.get(currentNode);
-            for (int index = 0; index < adjacentNodeList.size(); index++) { //대상 노드가 인접 노드를 가지고 있다면
+            System.out.println("adjacentNodeList : " + adjacentNodeList);
+            for (int index = 0; index < adjacentNodeList.size(); index++) { //대상 노드가 인접 노드를 가지고 있다면 인접노드 순회
                 adjacentNode = adjacentNodeList.get(index); //인접한 노드
                 adjacentKey = adjacentNode.vertex; // 노드
                 adjacentDistance = adjacentNode.distance; // 거리
                 sumDistance = currentDistance + adjacentDistance;
-                System.out.println("adjacentNode : " + adjacentNode + ", sum distance : " + sumDistance);
+                System.out.println("\nadjacentNode : " + adjacentNode + ", sum distance : " + sumDistance);
                 
                 //현재 까지의 최단 거리보다 지금 노드의 최단 거리가 짧으면 최단 거리를 갱신 한다.
-                System.out.println("sumDistance: "+sumDistance + " < " + "거리임시: "+distances.get(adjacentKey));
+                System.out.println("sumDistance: "+sumDistance + " < " + "임시거리: "+distances.get(adjacentKey));
                 if (sumDistance < distances.get(adjacentKey)) {
                     distances.put(adjacentKey, sumDistance); //임시저장 맵 갱신
+                    System.out.println("updated distances : " + distances);
                     priorityQueue.add(new Edge(adjacentKey, sumDistance));
+                    System.out.println("added priorityQueue : " + priorityQueue);
                 }
             }
         }

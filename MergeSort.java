@@ -8,6 +8,9 @@ public class MergeSort {
         int leftPoint = 0;
         int rightPoint = 0;
 
+        System.out.println("mergeFunc leftList : " + leftList);
+        System.out.println("mergeFunc rightList : " + rightList);
+
          // CASE1: left/right 둘 다 있을 때
         while (leftList.size() > leftPoint && rightList.size() > rightPoint) {
             if (leftList.get(leftPoint) > rightList.get(rightPoint)) {

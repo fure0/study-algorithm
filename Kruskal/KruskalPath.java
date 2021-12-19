@@ -44,16 +44,27 @@ public class KruskalPath {
         for (int index = 0; index < vertices.size(); index++) {
             this.makeSet(vertices.get(index));
         }
+        System.out.println("parent: " + parent);
+        System.out.println("rank: " + rank);
         
         // 2. 간선 weight 기반 sorting
         Collections.sort(edges);
+        System.out.println("edges: " + edges);
+        System.out.println("====================================");
         
         for (int index = 0; index < edges.size(); index++) {
             currentEdge = edges.get(index); //탐욕 알고리즘 기반으로 소트한 후에
             //사이클이 있는지 확인하기 위에 루트 노드 비교후, 없다면 union호출 -> 루트노드가 다르다는 것은 사이클이 없다는 것
-            if (this.find(currentEdge.nodeV) != this.find(currentEdge.nodeU)) {
+            String currentNodeV = this.find(currentEdge.nodeV);
+            String currentNodeU = this.find(currentEdge.nodeU);
+            System.out.println("parent: " + this.parent);
+            
+            if (currentNodeV != currentNodeU) {
+                System.out.println("사이클 없음 currentEdge: " + currentEdge);
                 this.union(currentEdge.nodeV, currentEdge.nodeU);
                 mst.add(currentEdge);
+            } else { // 여긴 확인용
+                System.out.println("사이클 생김 currentEdge: " + currentEdge);
             }
         }
         
@@ -92,3 +103,16 @@ public class KruskalPath {
         System.out.println(result);
     }
 }
+/*
+Spanning tree 또는 신장트리 라고 부름
+원래의 그래프의 모든 노드가 연결되 있으면서 트리의 조건을 만족하는 그래프
+신장 트리의 조건
+-본래의 그래프의 모든 노드를 포함
+-모든 노드가 서로 연결
+-트리의 속성을 만족시킴 (사이클이 생기지 않음)
+
+최소신장 트리란 (Minimum Spanning tree = MST)
+가능한 Spanning tree 중에서, 간성의 가중치 합이 최소인 Spanning tree
+
+간선이 작은것 부터 연결하며 사이클이 안생기도록 한다. 생기면 탈락
+*/

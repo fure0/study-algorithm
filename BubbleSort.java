@@ -26,10 +26,8 @@ public class BubbleSort {
             testData.add((int)(Math.random() * 100));
         }
         BubbleSort bSort = new BubbleSort();
-        bSort.sort(testData);
+        ArrayList<Integer> result = bSort.sort(testData);
 
-        for (int i = 0; i < testData.size()-1; i++) {
-            System.out.println(testData.get(i));    
-        }
+        System.out.println(result);
     }
 }

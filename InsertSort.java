@@ -18,7 +18,7 @@ public class InsertSort {
     public static void main(String[] args) {
         ArrayList<Integer> testData = new ArrayList<Integer>();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 30; i++) {
             testData.add((int)(Math.random() * 100));
         }
         InsertSort iSort = new InsertSort();
