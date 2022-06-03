@@ -12,7 +12,7 @@ public class QuickSort {
         ArrayList<Integer> leftArr = new ArrayList<Integer>();
         ArrayList<Integer> rightArr = new ArrayList<Integer>();        
         
-        for (int index = 1; index < dataList.size(); index++) {
+        for (int index = 1; index < dataList.size(); index++) { //index 1부터인거 주의
             if (dataList.get(index) > pivot) {
                 rightArr.add(dataList.get(index));
             } else {

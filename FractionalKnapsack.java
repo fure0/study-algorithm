@@ -21,6 +21,7 @@ public class FractionalKnapsack {
                 System.out.println("무게:" + objectList[index][0] + ", 가치:" + objectList[index][1] + ", 남은적재량:" + capacity);
             } else { // 남은 적재용량보다 무게가 무거울 때, 가능한 만큼만 담는 경우
                 fraction = capacity / (double)objectList[index][0];
+                System.out.println("capacity:" + capacity + " / (double)objectList[index][0]:"+(double)objectList[index][0]);
                 totalValue += (double)objectList[index][1] * fraction;
                 System.out.println("무게:" + objectList[index][0] + ", 가치:" + objectList[index][1] + ", 비율:" + fraction);
                 System.out.println("가치:" + (double)objectList[index][1] + " x 비율:" + fraction + " = " + (double)objectList[index][1] * fraction);                
