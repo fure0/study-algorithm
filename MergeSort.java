@@ -13,6 +13,7 @@ public class MergeSort {
 
          // CASE1: left/right 둘 다 있을 때
         while (leftList.size() > leftPoint && rightList.size() > rightPoint) {
+            // 둘중 작은거를 먼저 넣는다. (BST같이 왼쪽이 작은게 아니다.)
             if (leftList.get(leftPoint) > rightList.get(rightPoint)) {
                 mergedList.add(rightList.get(rightPoint));
                 rightPoint += 1;
@@ -60,7 +61,7 @@ public class MergeSort {
     public static void main(String[] args) {
         ArrayList<Integer> testData = new ArrayList<Integer>();
 
-        for (int index = 0; index < 6; index++) {
+        for (int index = 0; index < 7; index++) {
             testData.add((int)(Math.random() * 100));
         }
 
